@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sürpriz 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: pink;
+      color: #333;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden; /* buton taşsa bile kaydırma çubuğu çıkmasın */
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 24px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #ff4da6;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn:hover { background-color: #e60073; }
+    .btn:active { transform: scale(0.98); }
+
+    /* Deliler gibi butonunun ekranda dolaşma animasyonu */
+    @keyframes move {
+      0%   { top: 0; left: 0; }
+      20%  { top: 0; left: 80%; }
+      40%  { top: 70%; left: 80%; }
+      60%  { top: 70%; left: 0; }
+      80%  { top: 35%; left: 40%; }
+      100% { top: 0; left: 0; }
+    }
+    #crazy {
+      position: absolute;
+      animation: move 3s infinite; /* burada 2s → hızlı hareket */
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    /* Fotoğrafı sağ alt köşeye sabitle */
+    .corner-img {
+  position: fixed;
+  bottom: 20px;          /* alttan boşluk */
+  left: 50%;             /* ortalamak için */
+  transform: translateX(-50%);
+  width: 200px;          /* istediğin büyüklük */
+  border-radius: 10px;   /* köşeleri yuvarlak */
+}
+
+  </style>
+</head>
+<body>
+  <h1>Seni çok seviyorum ve sana aşığım 💕<br>Sen de beni seviyor musun?</h1>
+  <div>
+    <button class="btn" id="yes">Evet</button>
+    <button class="btn" id="crazy">Çok seviyorum aşkım</button>
+  </div>
+  <div id="result" aria-live="polite"></div>
+
+  <!-- Sağ alt köşedeki fotoğraf -->
+  <img src="IMG_0573.jpg" alt="Bizim fotoğrafımız" class="corner-img">
+
+  <script>
+    (function() {
+      var yesBtn = document.getElementById("yes");
+      var crazyBtn = document.getElementById("crazy");
+      var result = document.getElementById("result");
+
+      yesBtn.addEventListener("click", function() {
+        result.textContent = "Üzgünüm :( yanlış cevap";
+      });
+
+      crazyBtn.addEventListener("click", function() {
+        result.textContent = "Bunu biliyordum aşkım 💖";
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
